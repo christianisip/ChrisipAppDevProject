@@ -253,14 +253,14 @@ public class MainActivity extends AppCompatActivity {
                         navItemIndex = 0;
                         CURRENT_TAG = TAG_HOME;
                         break;
-                    case R.id.nav_photos:
-                        navItemIndex = 1;
-                        CURRENT_TAG = TAG_PHOTOS;
-                        break;
-                    case R.id.nav_movies:
-                        navItemIndex = 2;
-                        CURRENT_TAG = TAG_MOVIES;
-                        break;
+                    case R.id.nav_login:
+                        startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                        drawer.closeDrawers();
+                        return true;
+                    case R.id.nav_register:
+                        startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+                        drawer.closeDrawers();
+                        return true;
                     case R.id.nav_notifications:
                         navItemIndex = 3;
                         CURRENT_TAG = TAG_NOTIFICATIONS;
