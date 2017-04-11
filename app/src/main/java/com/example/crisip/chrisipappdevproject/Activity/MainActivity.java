@@ -24,24 +24,10 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 
-
-
-//import info.androidhive.navigationdrawer.R;
-//import info.androidhive.navigationdrawer.fragment.HomeFragment;
-//import info.androidhive.navigationdrawer.fragment.MoviesFragment;
-//import info.androidhive.navigationdrawer.fragment.NotificationsFragment;
-//import info.androidhive.navigationdrawer.fragment.PhotosFragment;
-//import info.androidhive.navigationdrawer.fragment.SettingsFragment;
-//import info.androidhive.navigationdrawer.other.CircleTransform;
-
 import com.example.crisip.chrisipappdevproject.R;
-import com.example.crisip.chrisipappdevproject.fragment.HomeFragment;
-import com.example.crisip.chrisipappdevproject.fragment.SettingsFragment;
-import com.example.crisip.chrisipappdevproject.fragment.MoviesFragment;
-import com.example.crisip.chrisipappdevproject.fragment.PhotosFragment;
-import com.example.crisip.chrisipappdevproject.fragment.NotificationsFragment;
+import com.example.crisip.chrisipappdevproject.Fragment.HomeFragment;
 import com.example.crisip.chrisipappdevproject.Other.CircleTransform;
-
+//REFERENCES http://www.androidhive.info/2013/11/android-sliding-menu-using-navigation-drawer/
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,30 +35,23 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private View navHeader;
     private ImageView imgNavHeaderBg, imgProfile;
-    private TextView txtName, txtWebsite;
+    private TextView txtName;
     private Toolbar toolbar;
-    private FloatingActionButton fab;
+    private FloatingActionButton fabRSS;
 
     // urls to load navigation header background image
     // and profile image
     private static final String urlNavHeaderBg = "http://api.androidhive.info/images/nav-menu-header-bg.jpg";
     private static final String urlProfileImg = "https://lh3.googleusercontent.com/eCtE_G34M9ygdkmOpYvCag1vBARCmZwnVS6rS5t4JLzJ6QgQSBquM0nuTsCpLhYbKljoyS-txg";
 
-    // index to identify current nav menu item
     public static int navItemIndex = 0;
 
-    // tags used to attach the fragments
     private static final String TAG_HOME = "home";
-    private static final String TAG_PHOTOS = "photos";
-    private static final String TAG_MOVIES = "movies";
     private static final String TAG_NOTIFICATIONS = "notifications";
     private static final String TAG_SETTINGS = "settings";
     public static String CURRENT_TAG = TAG_HOME;
 
-    // toolbar titles respected to selected nav menu item
     private String[] activityTitles;
-
-    // flag to load home fragment when user presses back key
     private boolean shouldLoadHomeFragOnBackPress = true;
     private Handler mHandler;
 
@@ -81,55 +60,47 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         mHandler = new Handler();
 
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fabRSS = (FloatingActionButton)findViewById(R.id.fab);
 
-        // Navigation view header
         navHeader = navigationView.getHeaderView(0);
         txtName = (TextView) navHeader.findViewById(R.id.name);
-        txtWebsite = (TextView) navHeader.findViewById(R.id.website);
-        imgNavHeaderBg = (ImageView) navHeader.findViewById(R.id.img_header_bg);
-        imgProfile = (ImageView) navHeader.findViewById(R.id.img_profile);
+        imgNavHeaderBg = (ImageView)navHeader.findViewById(R.id.img_header_bg);
+        imgProfile = (ImageView)navHeader.findViewById(R.id.img_profile);
 
         // load toolbar titles from string resources
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
 
-        fab.setOnClickListener(new View.OnClickListener() {
+        fabRSS.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View view)
+            {
+                startActivity(new Intent(MainActivity.this, RSSActivity.class));
             }
         });
 
-        // load nav menu header data
         loadNavHeader();
 
-        // initializing navigation menu
         setUpNavigationView();
 
-        if (savedInstanceState == null) {
+        if (savedInstanceState == null)
+        {
             navItemIndex = 0;
             CURRENT_TAG = TAG_HOME;
             loadHomeFragment();
         }
     }
 
-    /***
-     * Load navigation menu header information
-     * like background image, profile image
-     * name, website, notifications action view (dot)
-     */
     private void loadNavHeader() {
-        // name, website
-        txtName.setText("Ravi Tamada");
-        txtWebsite.setText("www.androidhive.info");
+
+        txtName.setText("Christian Isip");
 
         // loading header background image
         Glide.with(this).load(urlNavHeaderBg)
@@ -149,35 +120,24 @@ public class MainActivity extends AppCompatActivity {
         navigationView.getMenu().getItem(3).setActionView(R.layout.menu_dot);
     }
 
-    /***
-     * Returns respected fragment that user
-     * selected from navigation menu
-     */
-    private void loadHomeFragment() {
-        // selecting appropriate nav menu item
-        selectNavMenu();
 
-        // set toolbar title
+    private void loadHomeFragment() {
+
+        selectNavMenu();
         setToolbarTitle();
 
-        // if user select the current navigation menu again, don't do anything
-        // just close the navigation drawer
-        if (getSupportFragmentManager().findFragmentByTag(CURRENT_TAG) != null) {
+        if (getSupportFragmentManager().findFragmentByTag(CURRENT_TAG) != null)
+        {
             drawer.closeDrawers();
-
-            // show or hide the fab button
             toggleFab();
             return;
         }
 
-        // Sometimes, when fragment has huge data, screen seems hanging
-        // when switching between navigation menus
-        // So using runnable, the fragment is loaded with cross fade effect
-        // This effect can be seen in GMail app
-        Runnable mPendingRunnable = new Runnable() {
+        Runnable mPendingRunnable = new Runnable()
+        {
             @Override
-            public void run() {
-                // update the main content by replacing fragments
+            public void run()
+            {
                 Fragment fragment = getHomeFragment();
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.setCustomAnimations(android.R.anim.fade_in,
@@ -187,48 +147,27 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        // If mPendingRunnable is not null, then add to the message queue
+
         if (mPendingRunnable != null) {
             mHandler.post(mPendingRunnable);
         }
 
-        // show or hide the fab button
         toggleFab();
-
-        //Closing drawer on item click
         drawer.closeDrawers();
-
-        // refresh toolbar menu
         invalidateOptionsMenu();
     }
 
-    private Fragment getHomeFragment() {
+    private Fragment getHomeFragment()
+     {
         switch (navItemIndex) {
             case 0:
-                // home
                 HomeFragment homeFragment = new HomeFragment();
                 return homeFragment;
-            case 1:
-                // photos
-                PhotosFragment photosFragment = new PhotosFragment();
-                return photosFragment;
-            case 2:
-                // movies fragment
-                MoviesFragment moviesFragment = new MoviesFragment();
-                return moviesFragment;
-            case 3:
-                // notifications fragment
-                NotificationsFragment notificationsFragment = new NotificationsFragment();
-                return notificationsFragment;
-
-            case 4:
-                // settings fragment
-                SettingsFragment settingsFragment = new SettingsFragment();
-                return settingsFragment;
             default:
                 return new HomeFragment();
         }
     }
+
 
     private void setToolbarTitle() {
         getSupportActionBar().setTitle(activityTitles[navItemIndex]);
@@ -239,16 +178,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUpNavigationView() {
-        //Setting Navigation View Item Selected Listener to handle the item click of the navigation menu
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-
-            // This method will trigger on item Click of navigation menu
             @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-
-                //Check to see which item was being clicked and perform appropriate action
+            public boolean onNavigationItemSelected(MenuItem menuItem)
+            {
                 switch (menuItem.getItemId()) {
-                    //Replacing the main content with ContentFragment Which is our Inbox View;
                     case R.id.home:
                         navItemIndex = 0;
                         CURRENT_TAG = TAG_HOME;
@@ -283,16 +217,16 @@ public class MainActivity extends AppCompatActivity {
                         navItemIndex = 0;
                 }
 
-                //Checking if the item is in checked state or not, if not make it in checked state
-                if (menuItem.isChecked()) {
+
+                if (menuItem.isChecked())
+                {
                     menuItem.setChecked(false);
-                } else {
+                } else
+                    {
                     menuItem.setChecked(true);
                 }
                 menuItem.setChecked(true);
-
                 loadHomeFragment();
-
                 return true;
             }
         });
@@ -332,7 +266,8 @@ public class MainActivity extends AppCompatActivity {
         if (shouldLoadHomeFragOnBackPress) {
             // checking if user is on other navigation menu
             // rather than home
-            if (navItemIndex != 0) {
+            if (navItemIndex != 0)
+            {
                 navItemIndex = 0;
                 CURRENT_TAG = TAG_HOME;
                 loadHomeFragment();
@@ -360,7 +295,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
@@ -387,11 +323,11 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // show or hide the fab
+    // show or hide the fabRSS
     private void toggleFab() {
         if (navItemIndex == 0)
-            fab.show();
+            fabRSS.show();
         else
-            fab.hide();
+            fabRSS.hide();
     }
 }

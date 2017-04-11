@@ -4,7 +4,8 @@ package com.example.crisip.chrisipappdevproject;
  * Created by Crisip on 4/3/2017.
  */
 
-public class User {
+public class User
+{
 
     private int id;
     private String name;
@@ -15,7 +16,8 @@ public class User {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id)
+    {
         this.id = id;
     }
 
