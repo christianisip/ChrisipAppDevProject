@@ -51,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG_SETTINGS = "settings";
     public static String CURRENT_TAG = TAG_HOME;
 
+    
+
     private String[] activityTitles;
     private boolean shouldLoadHomeFragOnBackPress = true;
     private Handler mHandler;
@@ -196,9 +198,9 @@ public class MainActivity extends AppCompatActivity {
                         drawer.closeDrawers();
                         return true;
                     case R.id.nav_notifications:
-                        navItemIndex = 3;
-                        CURRENT_TAG = TAG_NOTIFICATIONS;
-                        break;
+                        startActivity(new Intent(MainActivity.this, RSSActivity.class));
+                        drawer.closeDrawers();
+                        return true;
                     case R.id.nav_settings:
                         navItemIndex = 4;
                         CURRENT_TAG = TAG_SETTINGS;
