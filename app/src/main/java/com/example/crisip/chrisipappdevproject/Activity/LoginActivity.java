@@ -79,14 +79,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
      */
     private void verifyFromSQLite()
     {
-        if (!inputValidation.isInputEditTextFilled(txtILeditemail, txtILemail, getString(R.string.error_message_email)))
+        if (!inputValidation.isInputEditTextFilled(txtILeditemail, txtILemail, getString(R.string.notvalidemail)))
         {
             return;
         }
-        if (!inputValidation.isInputEditTextEmail(txtILeditemail, txtILemail, getString(R.string.error_message_email))) {
+        if (!inputValidation.isInputEditTextEmail(txtILeditemail, txtILemail, getString(R.string.notvalidemail))) {
             return;
         }
-        if (!inputValidation.isInputEditTextFilled(txtILeditpassword, txtILpassword, getString(R.string.error_message_email))) {
+        if (!inputValidation.isInputEditTextFilled(txtILeditpassword, txtILpassword, getString(R.string.notvalidemail))) {
             return;
         }
 
