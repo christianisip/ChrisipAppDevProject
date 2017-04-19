@@ -36,13 +36,14 @@ public class InputValidation
         return true;
     }
 
-    public boolean isInputEditTextEmail(TextInputEditText validInputEditEmail,
-                                        TextInputLayout textInputLayout,
-                                        String errorMessage) {
-        String value = validInputEditEmail.getText().toString().trim();
-        if (value.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(value).matches()) {
+    public boolean isInputEditTextUsername(TextInputEditText validInputEditUsername,
+                                           TextInputLayout textInputLayout,
+                                           String errorMessage) {
+        String value = validInputEditUsername.getText().toString().trim();
+        if (value.isEmpty())
+        {
             textInputLayout.setError(errorMessage);
-            hideKeyboardFrom(validInputEditEmail);
+            hideKeyboardFrom(validInputEditUsername);
             return false;
         } else {
             textInputLayout.setErrorEnabled(false);

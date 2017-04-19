@@ -5,7 +5,7 @@
     <string name="openDrawer">open_drawer</string>
     <string name="closeDrawer">close_drawer</string>
 
-    <!-- Navigation Drawer menu labels -->
+
     <string name="nav_home">Home</string>
     <string name="nav_login">Login</string>
     <string name="nav_register">Register</string>
@@ -13,7 +13,6 @@
     <string name="nav_settings">Settings</string>
     <string name="nav_about_us">About Us</string>
 
-    <!-- Toolbar titles when navigation menu item is selected -->
     <string-array name="nav_item_activity_titles">
         <item>Home</item>
         <item>Login</item>
@@ -29,31 +28,29 @@
     <string name="action_mark_all_read">Mark All as Read</string>
     <string name="privacy_policy">Privacy Policy</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-    <!--for login and register activity-->
-    <!--<string name="app_name">Login Register</string>-->
     <string name="text_accounts">All Accounts</string>
     <string name="hint_name">Name</string>
-    <string name="hint_email">Email</string>
+    <string name="hint_username">Username</string>
+
     <string name="hint_password">Password</string>
     <string name="hint_confirm_password">Confirm Password</string>
     <string name="text_login">Login</string>
     <string name="text_register">Register</string>
-    <string name="notvalidname">Enter Full Name</string>
-    <string name="notvalidemail">Enter Valid Email</string>
-    <string name="notvalidage">Enter Age</string>
-    <string name="notvalidpassword">Enter Password</string>
-    <string name="success_message">Registration Successful</string>
-    <string name="text_not_member">No account yet? Create one</string>
-    <string name="text_already_member">Already a member? Login</string>
-    <string name="error_email_exists">Email Already Exists</string>
-    <string name="error_password_match">Password Does Not Matches</string>
-    <string name="error_valid_email_password">Wrong Email or Password</string>
+    <string name="notvalidname">Please Enter a Full Name</string>
+    <string name="notvalidemail">Please Enter a Valid Username</string>
+    <string name="notvalidage">Please Enter an Age</string>
+    <string name="notvalidpassword">Please Enter a Password</string>
+    <string name="success_message">Your Registration was Successful</string>
+
+    <string name="text_not_member">No account yet? Register here</string>
+    <string name="text_already_member">Have an account? Login here</string>
+
+    <string name="error_email_exists">Username entered already Exists</string>
+    <string name="error_password_match">Entered password does not matches</string>
+    <string name="error_valid_email_password">Wrong username or Password</string>
     <string name="action_settings">Settings</string>
-    <string name="text_hello">Hello,</string>
-    <string name="text_title">Android Tutorials Hub</string>
 
 </resources>

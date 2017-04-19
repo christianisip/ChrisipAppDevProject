@@ -9,6 +9,7 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 
@@ -39,12 +40,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-//        getSupportActionBar().hide();
+
 
         nestedScrollView = (NestedScrollView) findViewById(R.id.nestedScrollView);
 
-        txtILemail = (TextInputLayout) findViewById(R.id.textInputLayoutEmail);
-        txtILpassword = (TextInputLayout) findViewById(R.id.textInputLayoutPassword);
+        txtILemail = (TextInputLayout) findViewById(R.id.txtInputLayoutEmail);
+        txtILpassword = (TextInputLayout) findViewById(R.id.txtInputLayoutPassword);
 
         txtILeditemail = (TextInputEditText) findViewById(R.id.textInputEditTextEmail);
         txtILeditpassword = (TextInputEditText) findViewById(R.id.textInputEditTextPassword);
@@ -56,6 +57,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         inputValidation = new InputValidation(activity);
         btnAppCompatLogin.setOnClickListener(this);
         tvLinkRegister.setOnClickListener(this);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+
+        if (getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
 
     }
 
@@ -74,16 +84,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    /**
-     * This method is to validate the input text fields and verify login credentials from SQLite
-     */
+
     private void verifyFromSQLite()
     {
         if (!inputValidation.isInputEditTextFilled(txtILeditemail, txtILemail, getString(R.string.notvalidemail)))
         {
             return;
         }
-        if (!inputValidation.isInputEditTextEmail(txtILeditemail, txtILemail, getString(R.string.notvalidemail))) {
+        if (!inputValidation.isInputEditTextUsername(txtILeditemail, txtILemail, getString(R.string.notvalidemail))) {
             return;
         }
         if (!inputValidation.isInputEditTextFilled(txtILeditpassword, txtILpassword, getString(R.string.notvalidemail))) {
@@ -94,10 +102,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 , txtILeditpassword.getText().toString().trim())) {
 
 
-            Intent accountsIntent = new Intent(activity, MainActivity.class);
-            accountsIntent.putExtra("EMAIL", txtILeditemail.getText().toString().trim());
+            Intent intent = new Intent(activity, MainActivity.class);
+            intent.putExtra("Username", txtILeditemail.getText().toString().trim());
             emptyInputEditText();
-            startActivity(accountsIntent);
+            startActivity(intent);
 
 
         }
@@ -112,4 +120,5 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         txtILeditemail.setText(null);
         txtILeditpassword.setText(null);
     }
+
 }

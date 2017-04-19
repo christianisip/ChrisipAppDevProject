@@ -1,11 +1,14 @@
 package com.example.crisip.chrisipappdevproject.Activity;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -49,7 +52,7 @@ public class RSSActivity extends AppCompatActivity {
     private final int STANDARD_REQUEST_CODE = 0;
     private MenuItem settings;
     private int color = Color.BLACK;
-
+    private Toolbar toolbar;
 
     @Override
     protected void onResume()
@@ -63,7 +66,6 @@ public class RSSActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rss);
-//        settings = (MenuItem)findViewById(R.id.mSettings);
     }
 
     class rssListAdapter extends ArrayAdapter<ListItem>
@@ -97,13 +99,13 @@ public class RSSActivity extends AppCompatActivity {
                 }
                 if (tvDate != null) {
                     tvDate.setText("Publish Date: " + rssOutput.get(position).getPubDate());
-
-                    tvDate.setBackgroundColor(Color.LTGRAY);
+                    tvDate.setBackgroundColor(Color.BLACK);
                 }
                 if (tvDescription != null)
                 {
                     tvDescription.setText(rssOutput.get(position).getDescription().substring(0, 100) + "...");
-                    tvDescription.setHeight(120);
+                    tvDescription.setHeight(150);
+                    tvDescription.setTextSize(16);
                     tvDescription.setTextColor(Color.WHITE);
                 }
             }
@@ -380,6 +382,5 @@ public class RSSActivity extends AppCompatActivity {
         }
 
     }
-
 }
 

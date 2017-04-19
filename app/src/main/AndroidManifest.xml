@@ -20,11 +20,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".Activity.LoginActivity" />
-        <activity android:name=".Activity.UsersListActivity" />
-        <activity android:name=".Activity.RSSActivity" />
+        <activity android:name=".Activity.LoginActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.crisip.chrisipappdevproject.Activity.LoginActivity" />
+        </activity>
+        <activity android:name=".Activity.RSSActivity">
+        </activity>
         <activity android:name=".Activity.RssDetailActivity" />
-        <activity android:name=".Activity.SettingsActivity"></activity>
+        <activity android:name=".Activity.SettingsActivity">
+        </activity>
+
     </application>
 
 </manifest>

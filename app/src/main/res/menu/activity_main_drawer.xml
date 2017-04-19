@@ -16,11 +16,6 @@
             android:title="@string/nav_register" />
 
         <item
-            android:id="@+id/nav_notifications"
-
-            android:title="@string/nav_notifications" />
-
-        <item
             android:id="@+id/nav_settings"
 
             android:title="@string/nav_settings" />
