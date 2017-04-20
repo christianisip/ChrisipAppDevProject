@@ -85,22 +85,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // query the user table
-        /**
-         * Here query function is used to fetch records from user table this function works like we use sql query.
-         * SQL query equivalent to this query function is
-         * SELECT user_id,user_name,user_email,user_password FROM user ORDER BY user_name;
-         */
-        Cursor cursor = db.query(TABLE_USER, //Table to query
-                columns,    //columns to return
-                null,        //columns for the WHERE clause
-                null,        //The values for the WHERE clause
-                null,       //group the rows
-                null,       //filter by row groups
-                sortOrder); //The sort order
+
+        Cursor cursor = db.query(TABLE_USER,
+                columns,
+                null,
+                null,
+                null,
+                null,
+                sortOrder);
 
 
-        // Traversing through all rows and adding to list
+
         if (cursor.moveToFirst()) {
             do {
                 User user = new User();
@@ -115,15 +110,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         db.close();
 
-        // return user list
+
         return userList;
     }
 
-    /**
-     * This method to update user record
-     *
-     * @param user
-     */
+
     public void updateUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -138,52 +129,36 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    /**
-     * This method is to delete user record
-     *
-     * @param user
-     */
+
     public void deleteUser(User user) {
         SQLiteDatabase db = this.getWritableDatabase();
-        // delete user record by id
         db.delete(TABLE_USER, COLUMN_USER_ID + " = ?",
                 new String[]{String.valueOf(user.getId())});
         db.close();
     }
 
-    /**
-     * This method to check user exist or not
-     *
-     * @param email
-     * @return true/false
-     */
+
     public boolean checkUser(String email) {
 
-        // array of columns to fetch
+
         String[] columns = {
                 COLUMN_USER_ID
         };
         SQLiteDatabase db = this.getReadableDatabase();
 
-        // selection criteria
         String selection = COLUMN_USER_USERNAME + " = ?";
 
-        // selection argument
+
         String[] selectionArgs = {email};
 
-        // query user table with condition
-        /**
-         * Here query function is used to fetch records from user table this function works like we use sql query.
-         * SQL query equivalent to this query function is
-         * SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com';
-         */
-        Cursor cursor = db.query(TABLE_USER, //Table to query
-                columns,                    //columns to return
-                selection,                  //columns for the WHERE clause
-                selectionArgs,              //The values for the WHERE clause
-                null,                       //group the rows
-                null,                      //filter by row groups
-                null);                      //The sort order
+
+        Cursor cursor = db.query(TABLE_USER,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null);
         int cursorCount = cursor.getCount();
         cursor.close();
         db.close();
@@ -195,39 +170,28 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return false;
     }
 
-    /**
-     * This method to check user exist or not
-     *
-     * @param email
-     * @param password
-     * @return true/false
-     */
+
     public boolean checkUser(String email, String password) {
 
-        // array of columns to fetch
+
         String[] columns = {
                 COLUMN_USER_ID
         };
         SQLiteDatabase db = this.getReadableDatabase();
-        // selection criteria
+
         String selection = COLUMN_USER_USERNAME + " = ?" + " AND " + COLUMN_USER_PASSWORD + " = ?";
 
-        // selection arguments
+
         String[] selectionArgs = {email, password};
 
-        // query user table with conditions
-        /**
-         * Here query function is used to fetch records from user table this function works like we use sql query.
-         * SQL query equivalent to this query function is
-         * SELECT user_id FROM user WHERE user_email = 'jack@androidtutorialshub.com' AND user_password = 'qwerty';
-         */
-        Cursor cursor = db.query(TABLE_USER, //Table to query
-                columns,                    //columns to return
-                selection,                  //columns for the WHERE clause
-                selectionArgs,              //The values for the WHERE clause
-                null,                       //group the rows
-                null,                       //filter by row groups
-                null);                      //The sort order
+
+        Cursor cursor = db.query(TABLE_USER,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null);
 
         int cursorCount = cursor.getCount();
 

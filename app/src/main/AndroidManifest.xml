@@ -28,8 +28,6 @@
         <activity android:name=".Activity.RSSActivity">
         </activity>
         <activity android:name=".Activity.RssDetailActivity" />
-        <activity android:name=".Activity.SettingsActivity">
-        </activity>
 
     </application>
 

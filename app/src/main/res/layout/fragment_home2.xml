@@ -37,11 +37,11 @@
 
             <ImageView
                 android:id="@+id/person_photo2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:src="@drawable/bg_icon_nba" />
+                android:src="@drawable/ic_launcher_clev" />
 
             <TextView
                 android:id="@+id/person_age"
@@ -117,11 +117,11 @@
 
             <ImageView
                 android:id="@+id/person_photo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:src="@drawable/bg_icon_nba" />
+                android:src="@drawable/ic_launcher_ee" />
 
             <TextView
                 android:id="@+id/person_age"
@@ -130,16 +130,16 @@
                 android:layout_alignParentBottom="false"
                 android:layout_alignStart="@+id/person_photo"
                 android:layout_below="@+id/person_photo2"
-                android:text="Golden State Warrior"
+                android:text="Edmonton Eskimos"
                 android:textColor="@android:color/black" />
 
             <ImageView
                 android:id="@+id/person_photo2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:src="@drawable/bg_icon_nba" />
+                android:src="@drawable/ic_launcher_bb" />
 
             <TextView
                 android:id="@+id/person_age"
@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/person_photo2"
-                android:text="Cleaveland Cavaliers"
+                android:text="Winnipeg Blue Bombers"
                 android:textColor="@android:color/black" />
 
             <TextView
@@ -169,7 +169,7 @@
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="16dp"
                 android:layout_toRightOf="@+id/person_photo"
-                android:text="80"
+                android:text="12"
                 android:textColor="@android:color/black"
                 android:textSize="26sp" />
 
@@ -181,7 +181,7 @@
                 android:layout_centerInParent="true"
                 android:layout_marginRight="16dp"
                 android:layout_toLeftOf="@+id/person_photo2"
-                android:text="80"
+                android:text="20"
                 android:textColor="@android:color/black"
                 android:textSize="26sp" />
 
@@ -191,7 +191,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="4:36"
+                android:text="0:59"
                 android:textColor="@android:color/black"
                 android:textSize="26sp" />
 
@@ -214,11 +214,11 @@
 
             <ImageView
                 android:id="@+id/person_photo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
-                android:src="@drawable/bg_icon_nba" />
+                android:src="@drawable/ic_launcher_stealers" />
 
             <TextView
                 android:id="@+id/person_age"
@@ -227,16 +227,16 @@
                 android:layout_alignParentBottom="false"
                 android:layout_alignStart="@+id/person_photo"
                 android:layout_below="@+id/person_photo2"
-                android:text="Golden State Warrior"
+                android:text="Minesota Vikings"
                 android:textColor="@android:color/black" />
 
             <ImageView
                 android:id="@+id/person_photo2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
-                android:src="@drawable/bg_icon_nba" />
+                android:src="@drawable/ic_launcher_viking2" />
 
             <TextView
                 android:id="@+id/person_age"
@@ -244,7 +244,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/person_photo2"
-                android:text="Cleaveland Cavaliers"
+                android:text="Pitsburg Steelers"
                 android:textColor="@android:color/black" />
 
             <TextView
@@ -266,7 +266,7 @@
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="16dp"
                 android:layout_toRightOf="@+id/person_photo"
-                android:text="80"
+                android:text="30"
                 android:textColor="@android:color/black"
                 android:textSize="26sp" />
 
@@ -278,7 +278,7 @@
                 android:layout_centerInParent="true"
                 android:layout_marginRight="16dp"
                 android:layout_toLeftOf="@+id/person_photo2"
-                android:text="80"
+                android:text="24"
                 android:textColor="@android:color/black"
                 android:textSize="26sp" />
 
@@ -288,7 +288,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:text="4:36"
+                android:text="8:53"
                 android:textColor="@android:color/black"
                 android:textSize="26sp" />
 

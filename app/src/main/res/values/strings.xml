@@ -21,6 +21,12 @@
         <item>Settings</item>
     </string-array>
 
+    <string-array name="rss_feeds">
+        <item>Basketball</item>
+        <item>Football</item>
+        <item>Baseball</item>
+    </string-array>
+
     <string name="activity_title_about_us">About Us</string>
     <string name="activity_title_privacy_policy">Privacy Policy</string>
     <string name="action_clear_all">Clear All</string>
@@ -52,5 +58,7 @@
     <string name="error_password_match">Entered password does not matches</string>
     <string name="error_valid_email_password">Wrong username or Password</string>
     <string name="action_settings">Settings</string>
+
+
 
 </resources>

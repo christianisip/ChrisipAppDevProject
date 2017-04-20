@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -28,7 +29,7 @@ import com.example.crisip.chrisipappdevproject.R;
 import com.example.crisip.chrisipappdevproject.Fragment.HomeFragment;
 import com.example.crisip.chrisipappdevproject.Other.CircleTransform;
 //REFERENCES http://www.androidhive.info/2013/11/android-sliding-menu-using-navigation-drawer/
-
+//http://www.androidtutorialshub.com/android-login-and-register-with-sqlite-database-tutorial/
 public class MainActivity extends AppCompatActivity {
 
     private NavigationView navigationView;
@@ -42,8 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
     private  final String TAG_HOME = "Home";
     public  String CURRENT_TAG = "Home";
-
-    
 
     private String[] activityTitles;
     private boolean shouldLoadHomeFragOnBackPress = true;
@@ -65,10 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         navHeader = navigationView.getHeaderView(0);
         txtName = (TextView) navHeader.findViewById(R.id.name);
-        //imgNavHeaderBg = (ImageView)navHeader.findViewById(R.id.img_header_bg);
-        //imgProfile = (ImageView)navHeader.findViewById(R.id.img_profile);
 
-        // load toolbar titles from string resources
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
 
         fabRSS.setOnClickListener(new View.OnClickListener()
@@ -177,15 +173,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(MainActivity.this, RegisterActivity.class));
                         drawer.closeDrawers();
                         return true;
-                    case R.id.nav_settings:
-                        startActivity(new Intent(MainActivity.this, SettingsActivity.class));
-                        drawer.closeDrawers();
-                        return true;
-//                    case R.id.nav_about_us:
-//                        // launch new intent instead of loading fragment
-//                        startActivity(new Intent(MainActivity.this, AboutUsActivity.class));
-//                        drawer.closeDrawers();
-//                        return true;
                     default:
                         navItemIndex = 0;
                 }
@@ -244,12 +231,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        if (navItemIndex == 0) {
-            getMenuInflater().inflate(R.menu.main, menu);
-        }
-
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main, menu);
         return true;
     }
 
@@ -260,8 +245,10 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
 
-        if (id == R.id.action_logout) {
-            Toast.makeText(getApplicationContext(), "Logout user!", Toast.LENGTH_LONG).show();
+        if (id == R.id.action_logout)
+        {
+            Toast.makeText(getApplicationContext(), "Logout sucess!", Toast.LENGTH_LONG).show();
+            txtName.setText("");
             return true;
         }
 

@@ -48,6 +48,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         txtILpassword = (TextInputLayout) findViewById(R.id.txtInputLayoutPassword);
 
         txtILeditemail = (TextInputEditText) findViewById(R.id.textInputEditTextEmail);
+        Intent intent = getIntent();
+        String newString = intent.getStringExtra("rssfeeds");
+        txtILeditemail.setText(newString);
         txtILeditpassword = (TextInputEditText) findViewById(R.id.textInputEditTextPassword);
 
         btnAppCompatLogin = (AppCompatButton) findViewById(R.id.appCompatButtonLogin);

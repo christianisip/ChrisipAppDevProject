@@ -13,10 +13,6 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
-//import com.androidtutorialshub.loginregister.R;
-//import com.androidtutorialshub.loginregister.helpers.InputValidation;
-//import com.androidtutorialshub.loginregister.model.User;
-//import com.androidtutorialshub.loginregister.sql.DatabaseHelper;
 
 import com.example.crisip.chrisipappdevproject.R;
 import com.example.crisip.chrisipappdevproject.User;

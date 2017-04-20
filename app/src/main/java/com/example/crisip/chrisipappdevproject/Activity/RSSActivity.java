@@ -43,16 +43,10 @@ public class RSSActivity extends AppCompatActivity {
 
     private ListView lv;
     private  String FEED_URL = "http://www.winnipegfreepress.com/rss/?path=%2Flocal";
-    private  String WORLD_FEED_URL = "http://www.winnipegfreepress.com/rss/?path=%2Fworld&path=%2Fworld";
-    private  String CANADA_FEED_URL = "http://www.winnipegfreepress.com/rss/?path=%2Fcanada";
-    private String BREAKING_FEED_URL = "http://www.winnipegfreepress.com/rss/?path=%2Fbreakingnews";
+    private  String BLUE_BOMBERS_URL = "http://www.winnipegfreepress.com/rss/?path=%2Fsports%2Ffootball%2Fbombers&path=%2Fsports%2Ffootball%2Fbombers";
     private URL feedURL;
     private BufferedReader bufferedReader;
     private ArrayList<ListItem> lvItemRSS;
-    private final int STANDARD_REQUEST_CODE = 0;
-    private MenuItem settings;
-    private int color = Color.BLACK;
-    private Toolbar toolbar;
 
     @Override
     protected void onResume()
@@ -77,7 +71,8 @@ public class RSSActivity extends AppCompatActivity {
         }
 
         @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
+        public View getView(int position, View convertView, ViewGroup parent)
+        {
             View view = convertView;
             if (view == null)
             {
@@ -241,7 +236,7 @@ public class RSSActivity extends AppCompatActivity {
             {
 
                 SAXParserFactory spf = SAXParserFactory.newInstance();
-                feedURL = new URL(FEED_URL);
+                feedURL = new URL(BLUE_BOMBERS_URL);
                 SAXParser saxParser = spf.newSAXParser();
                 FreepHandler freepHandler = new FreepHandler();
                 bufferedReader = new BufferedReader(
@@ -282,7 +277,6 @@ public class RSSActivity extends AppCompatActivity {
                     Intent intent = new Intent(RSSActivity.this, RssDetailActivity.class);
                     intent.putExtra("passDescription", lvItemRSS.get(position).getDescription());
                     intent.putExtra("passLink", lvItemRSS.get(position).getLink());
-//                   intent.putExtra("test", "test");
                     startActivity(intent);
                 }
             });
@@ -336,51 +330,6 @@ public class RSSActivity extends AppCompatActivity {
         public void setLink(String link){
             this.link = link;
         }
-    }
-
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        MenuInflater inflater = getMenuInflater();
-//
-//        inflater.inflate(R.menu.settings, menu);
-//        return true;
-//    }
-
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item)
-//    {
-//        switch (item.getItemId()) {
-//            case R.id.mSettings:
-//                Intent intent = new Intent(RSSActivity.this, SettingsActivity.class);
-//                intent.putExtra("color", Color.BLACK);
-//                startActivityForResult(intent, STANDARD_REQUEST_CODE);
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == STANDARD_REQUEST_CODE) {
-            if(resultCode == RESULT_OK) {
-                switch (data.getStringExtra("color")){
-                    case "Yellow":
-                        color = Color.YELLOW;
-                        break;
-                    case "Red":
-                        color = Color.RED;
-                        break;
-                    case "Blue":
-                        color = Color.BLUE;
-                        break;
-                    case "Green":
-                        color = Color.GREEN;
-                        break;
-                }
-            }
-        }
-
     }
 }
 
